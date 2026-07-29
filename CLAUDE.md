@@ -5,7 +5,6 @@ Python project scaffolded from `kornsour/python-template`.
 - **Env & deps:** `uv`. `make setup` creates the venv and installs `.[dev]`. Add
   runtime deps to `[project.dependencies]`; keep heavy/optional ones under
   `[project.optional-dependencies]` so CI stays light.
-- **Layout:** `src/` layout, package under `src/<name>/`, tests under `tests/`.
 - **Quality gate:** `make check` (ruff lint + ruff format + pyright + pytest) is
   exactly what CI enforces. Run it before pushing.
 - **CI:** `.github/workflows/ci.yml` calls the reusable
