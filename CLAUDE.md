@@ -19,9 +19,8 @@ Python project scaffolded from `kornsour/python-template`.
 
 Read [`docs/agent.md`](./docs/agent.md) before adding cloud resources. This
 repository owns deployable application infrastructure; the private
-[Lurking Walrus IaC operating model](https://github.com/Lurking-Walrus/.github-private/blob/main/docs/IAC-OPERATING-MODEL.md)
-owns organization/account boundaries, identity, shared domains, and guardrails.
-Use exact repository-and-environment-scoped GitHub OIDC roles, keep secrets out
-of source and logs, tag resources, include an IaC plan/cost/rollback summary in
-the PR, and obtain explicit authority before creating external or billable
-resources.
+organization-level source of truth is recorded only in the derived project's
+private `PROJECT_CONTEXT.md`. Use exact repository-and-environment-scoped
+GitHub OIDC roles, keep account-specific values and secrets out of public docs,
+tag resources, include an IaC plan/cost/rollback summary in the PR, and obtain
+explicit authority before creating external or billable resources.
