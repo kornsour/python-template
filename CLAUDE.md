@@ -14,3 +14,14 @@ Python project scaffolded from `kornsour/python-template`.
   when green. Review majors yourself.
 - **`main` is protected:** merge via PR; the `ci / Lint, type-check & test` check
   must pass.
+
+## Infrastructure as code
+
+Read [`docs/agent.md`](./docs/agent.md) before adding cloud resources. This
+repository owns deployable application infrastructure; the private
+[Lurking Walrus IaC operating model](https://github.com/Lurking-Walrus/.github-private/blob/main/docs/IAC-OPERATING-MODEL.md)
+owns organization/account boundaries, identity, shared domains, and guardrails.
+Use exact repository-and-environment-scoped GitHub OIDC roles, keep secrets out
+of source and logs, tag resources, include an IaC plan/cost/rollback summary in
+the PR, and obtain explicit authority before creating external or billable
+resources.

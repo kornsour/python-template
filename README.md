@@ -19,6 +19,9 @@ Then replace `src/python_template/` with your own package (update the package
 name in `pyproject.toml` under `[tool.hatch.build.targets.wheel]` and the import
 in `tests/`).
 
+For agent and cloud/IaC boundaries, read [`docs/agent.md`](./docs/agent.md) and
+[`CLAUDE.md`](./CLAUDE.md).
+
 | Command | Does |
 |---|---|
 | `make setup` | venv + dev deps + pre-commit hook |
