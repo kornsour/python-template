@@ -2,11 +2,10 @@
 
 ## Source of truth
 
-The private organization-level source of truth is the
-[Lurking Walrus IaC operating model](https://github.com/Lurking-Walrus/.github-private/blob/main/docs/IAC-OPERATING-MODEL.md).
-It owns AWS account boundaries, Identity Center, organization guardrails, shared
-domains, reusable modules, and the cross-project inventory. Membership is
-required to read it.
+This public template deliberately does not name an organization's accounts,
+domains, role ARNs, state buckets, or internal documentation location. When a
+project is created from the template, record its organization-level IaC source
+of truth in that project's private `PROJECT_CONTEXT.md`.
 
 This repository owns infrastructure that deploys the application built from
 this template. Keep runtime resources, state backend/key, role ARN,
@@ -24,6 +23,20 @@ environments, and rollback procedure in the derived application's repository.
 4. Start experiments in a shared Applications or Sandbox boundary. Use a
    dedicated production account only for customer data, material blast radius,
    distinct cost/quotas, or distinct security/retention requirements.
+
+## Public configuration and secrets
+
+- Public docs and examples must use placeholders such as `<AWS_ACCOUNT_ID>`,
+  `<AWS_REGION>`, `<DEPLOY_ROLE_ARN>`, and `<STATE_KEY>`; never replace them
+  with organization-specific values.
+- Keep non-secret deployment configuration in the protected deployment
+  environment's configuration variables. Keep credentials, database URLs,
+  signing keys, and third-party tokens in that environment's encrypted secrets.
+- GitHub Actions deployments must use OIDC, not `AWS_ACCESS_KEY_ID` or
+  `AWS_SECRET_ACCESS_KEY`. If an externally hosted runtime must call AWS
+  directly, use a narrowly scoped, rotatable credential stored only as a runtime
+  secret, never in source, examples, GitHub Actions, or a public document.
+- Document secret *names* and required scopes, never their values.
 
 ## Delivery rules
 

@@ -5,9 +5,8 @@ changing this template or provisioning cloud resources.
 
 - Run `make check` before publishing changes.
 - Keep deployable application infrastructure in this repository once it exists.
-- The private Lurking Walrus IaC operating model is authoritative for AWS
-  accounts, organization guardrails, identity, shared domains, and reusable
-  modules.
+- The organization-level source of truth is named only in the derived project's
+  private `PROJECT_CONTEXT.md`; do not expose it in this public template.
 - Use GitHub OIDC, never long-lived cloud credentials. Do not create accounts,
   DNS/public endpoints, billable resources, or production changes without
   explicit authority.
