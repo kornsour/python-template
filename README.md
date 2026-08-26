@@ -59,6 +59,13 @@ Actions minutes are the scarce resource, so the setup minimizes them:
   `USE_SELF_HOSTED_RUNNER=true` to route CI to a self-hosted runner (zero billed
   minutes); unset, it uses `ubuntu-latest`.
 
+## Archive
+
+[`archive/`](./archive/) holds historical/superseded documentation and
+records. Its contents reflect past decisions or state, not the current
+project — do not use it to understand how things work today or to guide new
+work.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
