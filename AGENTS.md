@@ -10,3 +10,6 @@ changing this template or provisioning cloud resources.
 - Use GitHub OIDC, never long-lived cloud credentials. Do not create accounts,
   DNS/public endpoints, billable resources, or production changes without
   explicit authority.
+- [`archive/`](./archive/) holds historical/superseded documentation and
+  records only. Do not treat anything under it as current state or use it to
+  inform new work.

@@ -15,6 +15,12 @@ Python project scaffolded from `kornsour/python-template`.
 - **`main` is protected:** merge via PR; the `ci / Lint, type-check & test` check
   must pass.
 
+## Archive
+
+[`archive/`](./archive/) holds historical/superseded documentation and
+records. Treat its contents as past context only — never as current state,
+and never as guidance for new work.
+
 ## Infrastructure as code
 
 Read [`docs/agent.md`](./docs/agent.md) before adding cloud resources. This
