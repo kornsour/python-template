@@ -15,9 +15,9 @@ make setup      # create the venv, install dev deps, install the pre-commit hook
 make check      # everything CI runs, locally: ruff check + ruff format --check + pyright + pytest
 ```
 
-Then replace `src/python_template/` with your own package (update the package
-name in `pyproject.toml` under `[tool.hatch.build.targets.wheel]` and the import
-in `tests/`).
+Then replace `src/python_template/` with your own package (update `name` under
+`[project]` and the package path under `[tool.hatch.build.targets.wheel]` in
+`pyproject.toml`, plus the import in `tests/`).
 
 For agent and cloud/IaC boundaries, read [`docs/agent.md`](./docs/agent.md) and
 [`CLAUDE.md`](./CLAUDE.md).
@@ -35,10 +35,14 @@ For agent and cloud/IaC boundaries, read [`docs/agent.md`](./docs/agent.md) and
 ## What's included
 
 - **Packaging** — `pyproject.toml` (PEP 621), `uv` for envs, `hatchling` build backend, `src/` layout.
-- **Quality** — ruff (lint + format), pyright (basic), pytest, pre-commit hooks.
+- **Quality** — ruff (lint + format), pyright (basic, with `reportMissingImports`
+  suppressed — see `[tool.pyright]` in `pyproject.toml`), pytest, pre-commit hooks.
 - **CI** — `.github/workflows/ci.yml` calls the shared reusable workflow in
   [`kornsour/gh-automation`](https://github.com/kornsour/gh-automation).
 - **Dependabot** — grouped weekly `pip` + `github-actions` updates with patch/minor auto-merge.
+- **Pre-commit autoupdate** — `.github/workflows/pre-commit-autoupdate.yml` runs
+  `pre-commit autoupdate` monthly and opens a PR, so pinned hook revs (notably
+  `ruff-pre-commit`) keep tracking the ruff version CI installs.
 - **Branch protection** — a repository ruleset requiring the CI check on `main`.
 
 ## Cost-conscious CI by design
