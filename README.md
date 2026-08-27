@@ -62,7 +62,11 @@ Actions minutes are the scarce resource, so the setup minimizes them:
   (one CI run) and auto-merge once checks pass; majors come individually.
 - **Self-hosted runner toggle.** Set the repo/org variable
   `USE_SELF_HOSTED_RUNNER=true` to route CI to a self-hosted runner (zero billed
-  minutes); unset, it uses `ubuntu-latest`.
+  minutes); unset, it uses `ubuntu-latest`. **Private repos only** — a public
+  caller always gets a GitHub-hosted runner regardless of this variable,
+  because a pull request from a fork could otherwise execute arbitrary code on
+  a self-hosted runner. Since this template (and anything generated from it by
+  default) is public, the toggle has no effect unless the repo is private.
 
 ## Archive
 
