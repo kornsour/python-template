@@ -8,9 +8,8 @@ help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-10s\033[0m %s\n", $$1, $$2}'
 
-setup: ## Create the venv and install dev deps + pre-commit hook
-	uv venv --python 3.14
-	uv pip install -e ".[dev]"
+setup: ## Create the venv and install dev deps + pre-commit hook, from uv.lock
+	uv sync --extra dev
 	$(PY) pre-commit install || true
 
 test: ## Run the test suite

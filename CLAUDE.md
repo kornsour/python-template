@@ -2,9 +2,12 @@
 
 Python project scaffolded from `kornsour/python-template`.
 
-- **Env & deps:** `uv`. `make setup` creates the venv and installs `.[dev]`. Add
-  runtime deps to `[project.dependencies]`; keep heavy/optional ones under
-  `[project.optional-dependencies]` so CI stays light.
+- **Env & deps:** `uv`. `make setup` runs `uv sync --extra dev`, installing
+  exactly what `uv.lock` pins. Add runtime deps to `[project.dependencies]`;
+  keep heavy/optional ones under `[project.optional-dependencies]` so CI stays
+  light. After adding/changing a dependency, run `uv lock` and commit the
+  updated lockfile (kornsour/gh-automation#18 tracks making CI itself enforce
+  this with a `uv lock --check` step, once the reusable workflow adopts it).
 - **Quality gate:** `make check` (ruff lint + ruff format + pyright + pytest) is
   exactly what CI enforces. Run it before pushing.
 - **CI:** `.github/workflows/ci.yml` calls the reusable
