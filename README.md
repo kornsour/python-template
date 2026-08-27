@@ -12,7 +12,7 @@ the first commit.
 
 ```bash
 make setup      # create the venv, install dev deps, install the pre-commit hook
-make check      # everything CI runs, locally: ruff + pyright + pytest
+make check      # everything CI runs, locally: ruff check + ruff format --check + pyright + pytest
 ```
 
 Then replace `src/python_template/` with your own package (update the package
@@ -28,8 +28,9 @@ For agent and cloud/IaC boundaries, read [`docs/agent.md`](./docs/agent.md) and
 | `make test` | pytest |
 | `make lint` | ruff check |
 | `make fmt` | ruff auto-fix + format |
+| `make fmt-check` | ruff format --check |
 | `make typecheck` | pyright |
-| `make check` | lint + typecheck + test |
+| `make check` | lint + fmt-check + typecheck + test |
 
 ## What's included
 
