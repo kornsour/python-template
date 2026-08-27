@@ -1,10 +1,18 @@
 version: 2
 updates:
-  # Python dependencies (pyproject.toml). Minor/patch are batched into a single
-  # grouped PR — one CI run per week instead of one per package — and the
-  # auto-merge workflow merges them once checks pass. Majors come as individual
-  # PRs for manual review.
-  - package-ecosystem: "pip"
+  # Python dependencies (pyproject.toml + uv.lock). Minor/patch are batched
+  # into a single grouped PR — one CI run per week instead of one per package —
+  # and the auto-merge workflow merges them once checks pass. Majors come as
+  # individual PRs for manual review.
+  #
+  # Ecosystem is "uv", not "pip": dev deps are declared as ">=" lower bounds
+  # (e.g. ruff>=0.16.4), so under the pip ecosystem every update reads as a
+  # requirement widening rather than a semver bump, and update-type comes back
+  # null — the minor/patch group filter then matches nothing and the
+  # auto-merge workflow's conditional steps skip. The uv ecosystem classifies
+  # from the resolved version bump in uv.lock instead of the loose
+  # requirement string, and keeps the lockfile itself up to date.
+  - package-ecosystem: "uv"
     directory: "/"
     schedule:
       interval: "weekly"
