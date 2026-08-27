@@ -2,7 +2,7 @@
 .DEFAULT_GOAL := help
 PY := uv run
 
-.PHONY: help setup test lint fmt typecheck check clean
+.PHONY: help setup test lint fmt fmt-check typecheck check clean
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -23,10 +23,13 @@ fmt: ## Auto-format and fix with ruff
 	$(PY) -m ruff check --fix .
 	$(PY) -m ruff format .
 
+fmt-check: ## Check formatting with ruff (no changes)
+	$(PY) -m ruff format --check .
+
 typecheck: ## Type-check with pyright
 	$(PY) -m pyright
 
-check: lint typecheck test ## Run everything CI runs, locally
+check: lint fmt-check typecheck test ## Run everything CI runs, locally
 
 clean: ## Remove caches
 	rm -rf .pytest_cache .ruff_cache
