@@ -24,13 +24,14 @@ For agent and cloud/IaC boundaries, read [`docs/agent.md`](./docs/agent.md) and
 
 | Command | Does |
 |---|---|
-| `make setup` | venv + dev deps + pre-commit hook |
+| `make setup` | venv + dev deps + pre-commit hook, from `uv.lock` |
 | `make test` | pytest |
 | `make lint` | ruff check |
 | `make fmt` | ruff auto-fix + format |
 | `make fmt-check` | ruff format --check |
 | `make typecheck` | pyright |
 | `make check` | lint + fmt-check + typecheck + test |
+| `uv lock` | re-resolve `uv.lock` after changing a dependency — commit the result |
 
 ## What's included
 
